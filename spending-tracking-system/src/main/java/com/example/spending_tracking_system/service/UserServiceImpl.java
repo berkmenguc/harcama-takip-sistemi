@@ -1,5 +1,6 @@
 package com.example.spending_tracking_system.service;
 
+import com.example.spending_tracking_system.exceptions.UserNotFoundException;
 import com.example.spending_tracking_system.models.User;
 import com.example.spending_tracking_system.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getById(Long userId) {
-        return repository.findById(userId).orElse(null);
+        return repository.findById(userId).orElseThrow(() -> new UserNotFoundException("Kullanıcı bulunamadı"));
     }
 
     @Override
