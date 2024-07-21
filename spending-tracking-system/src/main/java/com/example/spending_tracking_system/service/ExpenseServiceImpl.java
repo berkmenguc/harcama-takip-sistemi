@@ -3,6 +3,7 @@ package com.example.spending_tracking_system.service;
 import com.example.spending_tracking_system.models.Expense;
 import com.example.spending_tracking_system.models.User;
 import com.example.spending_tracking_system.repository.ExpenseRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +15,18 @@ import java.util.Optional;
 public class ExpenseServiceImpl implements ExpenseService{
     private final ExpenseRepository repository;
     @Override
+    @Transactional
     public List<Expense> getAll() {
         return repository.findAll();
     }
 
     @Override
+    @Transactional
     public Expense getExpenseById(Long expenseId) {
         return repository.findById(expenseId).orElse(null) ;
     }
 
+    @Transactional
     @Override
     public void deleteById(Long expenseId) {
         repository.deleteById(expenseId);
