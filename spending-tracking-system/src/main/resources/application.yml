@@ -1,0 +1,22 @@
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 12345
+    driverClassName: org.postgresql.Driver
+  logging:
+    level:
+      org.springframework.security.web: DEBUG
+server:
+  port: 8080
+application:
+  security:
+    jwt:
+      secret-key: b57f7b29-7028-4a99-bdfa-98d9b80dece5
