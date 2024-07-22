@@ -39,21 +39,6 @@ public class UserController {
     public User updateUser(@PathVariable("userId") Long userId, @RequestBody User newUser){
         return service.updateUser(userId , newUser);
     }
-    @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User request) {
-        Optional<User> user = service.getUserByUserName(request.getUserName());
-
-        if (user.isEmpty()) {
-            return ResponseEntity.badRequest().body("Geçersiz e-posta veya şifre");
-        }
-        User userr = user.get();
-
-
-        if (!userr.getPassword().equals(request.getPassword())) {
-            return ResponseEntity.badRequest().body("Geçersiz kullanıcı adı veya şifre");
-        }
-        return ResponseEntity.ok("Giriş başarılı!");
-    }
     @GetMapping("/test-api")
     public String testApi(){
         return "Hello it works";
