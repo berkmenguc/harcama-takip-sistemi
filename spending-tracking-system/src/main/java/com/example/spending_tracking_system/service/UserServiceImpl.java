@@ -4,6 +4,8 @@ import com.example.spending_tracking_system.exceptions.UserNotFoundException;
 import com.example.spending_tracking_system.models.User;
 import com.example.spending_tracking_system.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,4 +53,18 @@ public class UserServiceImpl implements UserService{
 
         }
     }
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    public void registerUser(String username, String rawPassword) {
+        if (repository.findByUserName(username).isPresent()) {
+            throw new RuntimeException("User already exists");
+        }
+        String encodedPassword = passwordEncoder.encode(rawPassword);
+        User user = new User();
+        user.setUserName(username);
+        user.setPassword(encodedPassword);
+
+        repository.save(user);
+    }
+
 }

@@ -5,7 +5,6 @@ import com.example.spending_tracking_system.models.User;
 import com.example.spending_tracking_system.repository.ExpenseRepository;
 import com.example.spending_tracking_system.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

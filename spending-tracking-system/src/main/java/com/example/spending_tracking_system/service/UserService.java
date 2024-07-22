@@ -14,4 +14,5 @@ public interface UserService {
     User createUser(User user);
     User updateUser(Long userId , User newUser);
 
+    void registerUser(String username, String password);
 }

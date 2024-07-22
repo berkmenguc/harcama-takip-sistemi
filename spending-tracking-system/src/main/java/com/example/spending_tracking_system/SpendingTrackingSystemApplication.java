@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 @SpringBootApplication
 @EnableScheduling
-@EnableWebSecurity
 public class SpendingTrackingSystemApplication {
 
 	public static void main(String[] args) {
